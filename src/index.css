@@ -1,0 +1,369 @@
+/* src/index.css */
+
+/* --- Базовый сброс и настройки --- */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* --- CSS Переменные для Тем --- */
+
+/* Светлая тема (по умолчанию) */
+body, body.light-theme {
+  /* Цвета */
+  --bg-primary: #ffffff;        /* Основной фон (белый) */
+  --bg-secondary: #f0f0f0;      /* Вторичный фон (очень светло-серый, для колонок) */
+  --card-bg: #ffffff;           /* Фон карточек */
+  --text-primary: #1a1a1a;      /* Основной текст (почти черный) */
+  --text-secondary: #555555;    /* Вторичный текст (темно-серый) */
+  --accent-color: #cccccc;      /* Акцент/Бордеры (светло-серый) */
+  --button-bg: #333333;         /* Фон кнопки */
+  --button-text: #ffffff;       /* Текст кнопки */
+  --shadow-color-rgb: 0, 0, 0;  /* Цвет тени (черный) */
+
+  /* Тени */
+  --shadow-sm: 0 1px 2px rgba(var(--shadow-color-rgb), 0.08);
+  --shadow-md: 0 3px 6px rgba(var(--shadow-color-rgb), 0.1);
+  --shadow-lg: 0 10px 20px rgba(var(--shadow-color-rgb), 0.1);
+
+  /* Переходы */
+  --transition-speed: 0.3s;
+}
+
+/* Темная тема */
+/* Темная тема */
+body.dark-theme {
+  /* Цвета */
+  --bg-primary: #1a1a1a;        /* Основной фон (почти черный) */
+  --bg-secondary: #2a2a2a;      /* Вторичный фон (очень темно-серый) */
+  --card-bg: #333333;           /* Фон карточек (темно-серый) */
+  --text-primary: #e0e0e0;      /* Основной текст (очень светло-серый) */
+  --text-secondary: #aaaaaa;    /* Вторичный текст (серый) */
+  --accent-color: #555555;      /* Акцент/Бордеры (темно-серый) */
+  --highlight-color: #ff9800;   /* Цвет контура при наведении */
+  --button-bg: #f0f0f0;         /* Фон кнопки */
+  --button-text: #1a1a1a;       /* Текст кнопки */
+  --shadow-color-rgb: 200, 200, 200; /* Цвет тени (светлый) */
+
+  /* Новые переменные для темной темы */
+  --bg-dark: #1a1a1a;           /* Темный фон для колонок */
+  --card-bg-dark: #333333;      /* Темный фон для карточек */
+  --accent-dark: #444444;       /* Темная граница */
+  --highlight-dark: #ff9800;    /* Цвет контура при наведении для темной темы */
+
+  /* Тени (могут быть менее заметны на темном фоне, можно усилить) */
+  --shadow-sm: 0 1px 2px rgba(var(--shadow-color-rgb), 0.08);
+  --shadow-md: 0 3px 6px rgba(var(--shadow-color-rgb), 0.1);
+  --shadow-lg: 0 10px 20px rgba(var(--shadow-color-rgb), 0.1);
+}
+
+
+/* --- Применение переменных к базовым элементам --- */
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; /* Плавный переход */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  transition: color var(--transition-speed) ease;
+}
+
+p {
+  color: var(--text-secondary);
+  transition: color var(--transition-speed) ease;
+}
+
+a {
+  color: var(--text-primary); /* Или сделать акцентным? */
+  /* text-decoration: none; */
+  transition: color var(--transition-speed) ease;
+}
+body.dark-theme a {
+  color: var(--text-primary);
+}
+a:hover {
+  opacity: 0.8;
+}
+
+button.button { /* Стили для кнопок с классом button */
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--accent-color);
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, opacity var(--transition-speed) ease;
+}
+
+button.button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+button.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--accent-color);
+  transition: border-color var(--transition-speed) ease;
+}
+
+/* Стили для общих контейнеров (пример) */
+.dashboard-page, .project-details-page, .settings-page, .login-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Стили для модального окна (используем переменные) */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Фон всегда темный полупрозрачный */
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--card-bg); /* Фон зависит от темы */
+  color: var(--text-primary); /* Текст зависит от темы */
+  padding: 25px 35px;
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 500px; /* Макс ширина */
+  width: 90%;
+  box-shadow: var(--shadow-lg); /* Тень */
+  z-index: 1001;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* Стили для форм внутри модалки (пример) */
+.form-field {
+  margin-bottom: 15px;
+}
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-secondary);
+  font-size: 0.9em;
+}
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="password"],
+.form-field textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  background-color: var(--bg-primary); /* Фон поля ввода */
+  color: var(--text-primary); /* Текст в поле ввода */
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+.form-field textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+
+
+/* Если кнопки внутри kanban-board */
+.button-container {
+  margin-bottom: 20px; /* Добавить отступ для пространства */
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+/* Стили для TaskCard (примеры) */
+/* Сам компонент TaskCard имеет инлайн-стили, но можно добавить стили по классу */
+.task-item { /* Допустим, мы добавим этот класс в TaskCard */
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--accent-color);
+  /* ... другие стили ... */
+}
+.task-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Класс для ошибки */
+.error-message {
+  color: #d32f2f; /* Красный цвет для ошибок */
+  background-color: rgba(211, 47, 47, 0.1);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+body.dark-theme .error-message {
+  color: #ffcdd2; /* Светло-красный на темном */
+  background-color: rgba(255, 205, 210, 0.15);
+}
+/* Добавь это в твой основной CSS файл */
+
+/* Основные стили канбан-доски */
+.kanban-board {
+  display: flex;
+  justify-content: center; /* Центрируем все элементы по горизонтали */
+  gap: 30px; /* Добавляем отступы между колонками */
+  margin-top: 20px;
+  padding: 20px;
+  width: 100%;
+  height: 100%; /* Растягиваем по высоте контейнер */
+  overflow-x: auto; /* Горизонтальный скролл, если колонок слишком много */
+  box-sizing: border-box;
+}
+
+/* Стили для колонок */
+.kanban-column {
+  flex: 1; /* Колонки могут растягиваться */
+  min-width: 250px; /* Минимальная ширина колонки */
+  max-width: 300px; /* Максимальная ширина колонки */
+  padding: 10px;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  border: 1px dashed var(--accent-color); /* Основная граница (пунктир) */
+}
+
+/* Стили для контейнера с кнопками */
+.button-container {
+  display: flex;
+  justify-content: flex-start; /* Выравнивание по левому краю */
+  gap: 20px; /* Расстояние между кнопками */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  z-index: 10;
+}
+
+/* Стили для кнопок */
+.button-container button {
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  transition: opacity 0.3s ease;
+}
+
+.button-container button:hover {
+  opacity: 0.8;
+}
+
+/* Стили для колонки при наведении (для зоны перетаскивания) */
+.kanban-column.droppable-over {
+  border: 1px dashed transparent; /* Прозрачная граница при наведении */
+  outline: 2px dashed var(--highlight-color); /* Пунктирный контур при наведении на колонку */
+  outline-offset: -4px; /* Для отступа, чтобы контур не перекрывал текст */
+  transition: outline-color 0.2s ease;
+}
+
+/* Заставляем контур плавно меняться */
+.kanban-column.droppable-over:hover {
+  outline-color: var(--accent-color); /* Цвет контура при наведении */
+}
+
+.kanban-column h3 {
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--accent-color);
+  text-align: center;
+  font-weight: 600;
+  transition: border-color var(--transition-speed) ease;
+}
+
+.kanban-column__empty-message {
+  color: var(--text-secondary);
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 20px;
+  flex-grow: 1; /* Занимает оставшееся место, если колонка пуста */
+}
+
+/* Основной стиль карточки */
+.task-card {
+  padding: 10px 15px;
+  border: 1px solid var(--accent-color);
+  margin-bottom: 8px;
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow 0.2s ease;
+}
+
+.task-card--dragging {
+  box-shadow: var(--shadow-lg); /* Усиленная тень для перетаскиваемой карточки */
+}
+
+/* Стили для кнопки удаления */
+.task-card__delete-button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 1.2em; /* Размер крестика */
+  padding: 0 2px;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* Цвета для кнопок удаления */
+.button--delete-user {
+  color: #f44336; /* Красный */
+}
+.button--delete-guest {
+  color: #ffa726; /* Оранжевый */
+}
+
+/* Темные/светлые темы */
+body.dark-theme .kanban-column {
+  background-color: var(--bg-dark); /* Темный фон для колонок */
+  border-color: var(--accent-dark); /* Темный цвет границы */
+}
+
+body.dark-theme .task-card {
+  background-color: var(--card-bg-dark); /* Темный фон карточек */
+  border-color: var(--accent-dark); /* Темная граница */
+}
+
+body.dark-theme .kanban-column.droppable-over {
+  outline-color: var(--highlight-dark); /* Темный цвет контура при наведении */
+}
+.page-container {
+  max-width: 1500px; /* Или другое значение */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;  /* Отступы слева и справа ВНУТРИ контейнера */
+  padding-right: 20px;
+}

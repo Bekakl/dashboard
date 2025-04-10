@@ -1,0 +1,171 @@
+/* src/styles/ContactPage.css */
+
+/* Общий класс page-container предполагается в index.css/App.css */
+/* .page-container { max-width: 1500px; margin: 0 auto; padding: 0 20px; } */
+
+.contact-page h1 {
+    text-align: center;
+    margin-bottom: 40px; /* Увеличили отступ */
+    color: var(--text-primary); /* Явный цвет */
+    transition: color var(--transition-speed) ease;
+}
+
+/* Контейнер для двух колонок */
+.contact-page__content {
+    display: flex;
+    flex-wrap: wrap; /* Перенос на маленьких экранах */
+    gap: 30px; /* Пространство между колонками */
+    margin-top: 30px;
+    /* align-items: flex-start; */ /* Убрали, чтобы колонки растягивались по высоте (по умолчанию stretch) */
+    justify-content: center;
+}
+
+/* Стили для колонок */
+.contact-page__column {
+    flex: 1;
+    min-width: 320px;
+    /* max-width: calc(50% - 15px); */ /* Убрали макс. ширину, пусть растягиваются */
+    display: flex; /* Для растягивания дочернего .auth-form-box */
+}
+
+/* Переопределение стилей для .auth-form-box ВНУТРИ КОЛОНОК */
+.contact-page__column .auth-form-box {
+    width: 100%;      /* Заполняет свою колонку */
+    max-width: none;  /* Убираем ограничение ширины */
+    margin: 0;        /* Убираем внешние отступы */
+    text-align: left; /* Текст внутри бокса - слева */
+    padding: 25px 30px; /* Внутренний отступ */
+    height: 100%;     /* <<< Растягиваем бокс по высоте колонки */
+    display: flex;
+    flex-direction: column; /* Внутренние элементы идут колонкой */
+    background-color: var(--card-bg); /* Фон */
+    border: 1px solid var(--accent-color); /* Рамка */
+    border-radius: 8px; /* Скругление */
+    box-shadow: var(--shadow-md); /* Тень */
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+/* Заголовки внутри боксов */
+.contact-page__column .auth-form-box h2 {
+    text-align: center; /* Заголовок по центру */
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--accent-color);
+    font-size: 1.3em;
+    font-weight: 600;
+    flex-shrink: 0; /* Не сжиматься */
+    transition: border-color var(--transition-speed) ease;
+}
+/* Абзацы внутри боксов */
+.contact-page__column .auth-form-box p {
+    text-align: left; /* Текст слева */
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+/* Форма внутри бокса (растягивается) */
+.contact-page__column .auth-form-box form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Занимает оставшееся место */
+}
+.contact-page__column .auth-form-box form .form-field {
+    margin-bottom: 15px; /* Отступ между полями */
+    flex-shrink: 0;
+}
+.contact-page__column .auth-form-box form .form-field label {
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+/* Стиль для textarea */
+.contact-page__column .auth-form-box form textarea {
+    flex-grow: 1; /* Поле описания ошибки растягивается */
+    min-height: 100px; /* Минимальная высота */
+}
+
+
+/* Контейнер для кнопки Submit (прижимаем к низу) */
+.contact-page__column .auth-form-box .form-actions {
+    margin-top: auto; /* Прижимает кнопку к низу формы */
+    padding-top: 20px;
+    text-align: right; /* Кнопка справа */
+    flex-shrink: 0;
+}
+
+/* Кнопка "Отправить отчет" */
+.contact-page__column--left .auth-form-box .button--submit {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-color);
+    font-weight: 500;
+    min-width: 160px;
+    width: auto; /* Убрали display: block, чтобы text-align сработал */
+    padding: 8px 15px; /* Вернули стандартный паддинг */
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+/* Ховер для кнопки "Отправить отчет" */
+.contact-page__column--left .auth-form-box .button--submit:hover:not(:disabled) {
+    /* Светлая тема: Фон чуть темнее */
+    background-color: color-mix(in srgb, var(--card-bg) 85%, black);
+    border-color: color-mix(in srgb, var(--text-primary) 40%, transparent);
+    color: var(--text-primary);
+    opacity: 1;
+}
+/* Ховер для кнопки в ТЕМНОЙ ТЕМЕ */
+body.dark-theme .contact-page__column--left .auth-form-box .button--submit:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--card-bg) 85%, white);
+    border-color: color-mix(in srgb, var(--text-primary) 60%, transparent);
+}
+
+/* ReadOnly поле Email */
+input[readOnly] {
+    background-color: var(--bg-secondary);
+    cursor: not-allowed;
+    opacity: 0.7; /* Чуть бледнее */
+    transition: background-color var(--transition-speed) ease;
+}
+
+/* --- Стили для Flip Card --- */
+.flip-card-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+.flip-card {
+    background-color: transparent;
+    width: 300px; height: 188px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+.flip-card-inner {
+    position: relative; width: 100%; height: 100%;
+    text-align: center; transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow-md); border-radius: 10px;
+}
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 10px; display: flex; flex-direction: column;
+    justify-content: space-between; padding: 20px;
+    color: var(--text-primary); overflow: hidden;
+    border: 1px solid var(--accent-color);
+    transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+.flip-card-front { background: linear-gradient(45deg, var(--bg-secondary), color-mix(in srgb, var(--bg-secondary) 85%, black)); }
+body.dark-theme .flip-card-front { background: linear-gradient(45deg, var(--bg-secondary), color-mix(in srgb, var(--bg-secondary) 85%, white)); }
+.flip-card-logo { font-size: 1.2em; font-weight: bold; text-align: right; opacity: 0.8; }
+.flip-card-chip { width: 40px; height: 30px; background-color: #e0e0e0; border-radius: 4px; align-self: flex-start; border: 1px solid #bdbdbd; }
+body.dark-theme .flip-card-chip { background-color: #757575; border-color: #9e9e9e; }
+.flip-card-hint { font-size: 0.9em; font-weight: 500; text-align: center; align-self: center; opacity: 0.9; }
+.flip-card-back { background-color: var(--bg-secondary); transform: rotateY(180deg); justify-content: center; align-items: center; font-family: 'Courier New', Courier, monospace; }
+.flip-card-back-header { font-size: 0.8em; margin-bottom: 15px; color: var(--text-secondary); }
+.flip-card-number { font-size: 1.4em; letter-spacing: 2px; font-weight: 600; margin-bottom: 10px; }
+.flip-card-recipient { font-size: 0.9em; color: var(--text-secondary); }

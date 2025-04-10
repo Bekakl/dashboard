@@ -1,0 +1,83 @@
+/* src/styles/Navbar.css */
+
+.navbar {
+    /* Убрали background-color, он будет от body */
+    /* Убрали position: sticky и top: 0 */
+    /* Убрали padding: 15px 0; */
+    border-bottom: 1px solid var(--accent-color); /* Нижняя граница остается */
+    transition: border-color var(--transition-speed) ease;
+
+    /* --- НОВЫЕ СТИЛИ (перенесены с page-container/navbar-container) --- */
+    display: flex;                  /* Включаем Flexbox */
+    justify-content: space-between; /* Лого слева, ссылки справа */
+    align-items: center;            /* Выравниваем по центру вертикали */
+    max-width: 1200px;              /* Максимальная ширина (как у page-container) */
+    margin: 0 auto;                 /* Центрируем навбар */
+    padding: 15px 20px;             /* Отступы по бокам и сверху/снизу */
+    /* --- КОНЕЦ НОВЫХ СТИЛЕЙ --- */
+}
+
+/* Селектор .navbar-container больше не нужен */
+/* .navbar-container { ... } */
+
+.navbar-logo {
+    font-size: 1.4em; /* Можно сделать чуть меньше, если нужно */
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    flex-shrink: 0; /* Не сжиматься */
+}
+.navbar-logo:hover { opacity: 0.8; }
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Уменьшим расстояние между ссылками */
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 0; /* Убираем боковые отступы у самих ссылок */
+    position: relative;
+    transition: color var(--transition-speed) ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.95em; /* Чуть меньше */
+    font-family: inherit;
+}
+
+.nav-link:hover { color: var(--text-primary); }
+.nav-link--active { color: var(--text-primary); font-weight: 600; }
+/* Убираем подчеркивание активной ссылки для минимализма */
+/* .nav-link--active::after { ... } */
+
+
+/* Стили для кнопок-ссылок (без изменений) */
+.button--logout { color: #e57373; /* Красный */ }
+.button--logout:hover { color: #d32f2f; }
+body.dark-theme .button--logout { color: #ef9a9a; }
+body.dark-theme .button--logout:hover { color: #e57373; }
+
+.button--login {
+    /* Можно оставить как есть или стилизовать особо */
+}
+.navbar {
+    opacity: 0;  /* Начальная прозрачность */
+    transform: translateY(-20px); /* Начальное положение */
+    animation: fadeInNavbar 0.5s ease-out forwards; /* Анимация */
+}
+
+/* Ключевые кадры для анимации */
+@keyframes fadeInNavbar {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,39 @@
+.projects__list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.projects__item {
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.projects__add {
+    display: flex;
+    gap: 10px;
+}
+
+.projects__add input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.projects__add button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #1976d2;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.projects__add button:hover {
+    background-color: #145ea8;
+}

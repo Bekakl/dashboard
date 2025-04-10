@@ -1,0 +1,115 @@
+/* src/styles/AuthPage.css */
+
+/* Контейнер для всей страницы (центрирование) */
+.login-page-container,
+.register-page-container { /* Добавим класс и для регистрации */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh; /* Чтобы блок был по центру, даже если контента мало */
+    padding: 20px;
+    background-color: var(--bg-primary); /* Используем переменную темы */
+}
+
+/* Сам блок формы */
+.auth-form-box { /* Переименовал для общности */
+    background-color: var(--card-bg); /* Фон карточки из темы */
+    color: var(--text-primary);     /* Текст из темы */
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);   /* Тень из темы */
+    width: 100%;
+    max-width: 400px;               /* Ограничиваем макс. ширину */
+    text-align: center;             /* Центрируем заголовок и текст */
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+.auth-form-box h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Стили для полей формы (дополняем базовые из index.css) */
+.auth-form-box .form-field {
+    margin-bottom: 20px;
+    text-align: left; /* Выравниваем label и input по левому краю */
+}
+
+.auth-form-box .form-field label {
+    font-weight: 500;
+}
+
+/* Стили для кнопок внутри формы */
+.auth-form-box .button--submit,
+.auth-form-box .button--google {
+    width: 100%; /* Кнопки на всю ширину блока */
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.auth-form-box .button--google {
+    /* Стили для кнопки Google (уже есть инлайн, но можно перенести) */
+    /* display: flex; align-items: center; justify-content: center; gap: 10px; */
+    /* Можно добавить рамку или изменить фон для акцента */
+    background-color: var(--card-bg); /* Фон как у карточки */
+    color: var(--text-primary); /* Текст как основной */
+    border: 1px solid var(--accent-color);
+}
+body.dark-theme .auth-form-box .button--google {
+    /* Стили кнопки Google в темной теме, если нужно отличие */
+    border-color: var(--text-secondary);
+}
+.auth-form-box .button--google:hover:not(:disabled) {
+    background-color: var(--bg-secondary); /* Легкое изменение фона при наведении */
+}
+.auth-form-box .button--google svg {
+    margin-right: 8px; /* Отступ для иконки */
+}
+
+
+/* Разделитель "ИЛИ" */
+.divider {
+    text-align: center;
+    margin: 25px 0;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    position: relative;
+    /* Линии по бокам (опционально) */
+    display: flex;
+    align-items: center;
+}
+.divider::before,
+.divider::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--accent-color);
+    margin: 0 10px;
+    transition: background-color var(--transition-speed) ease;
+}
+
+
+/* Ссылки внизу */
+.auth-form-box p {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+.auth-form-box p a {
+    color: var(--text-primary); /* Ссылка основным цветом текста */
+    font-weight: 500;
+    text-decoration: none;
+}
+.auth-form-box p a:hover {
+    text-decoration: underline;
+}
+
+/* Сообщение об ошибке */
+.auth-form-box .error-message {
+    text-align: left; /* Выравнивание текста ошибки */
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}

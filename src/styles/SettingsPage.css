@@ -1,0 +1,97 @@
+/* src/styles/SettingsPage.css */
+
+/* Общий класс page-container предполагается в index.css/App.css
+   с max-width (например, 1500px) и margin: auto */
+
+.settings-page h1 {
+    text-align: center; /* Центрируем главный заголовок страницы */
+    margin-bottom: 40px; /* Отступ снизу */
+}
+
+/* Стили для секций настроек */
+.settings-section {
+    /* --- УМЕНЬШЕНИЕ ШИРИНЫ И ЦЕНТРИРОВАНИЕ --- */
+    max-width: 650px;      /* <<< Задаем максимальную ширину блока секции */
+    width: 100%;           /* Занимает доступную ширину, но не более max-width */
+    margin-left: auto;     /* <<< Центрируем сам блок секции */
+    margin-right: auto;    /* <<< Центрируем сам блок секции */
+    text-align: center;    /* <<< Центрируем ВЕСЬ текст внутри секции */
+    /* --- */
+    margin-bottom: 30px;   /* Отступ между секциями */
+    padding: 25px 30px;    /* Внутренние отступы */
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--accent-color);
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.settings-section h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--accent-color);
+    font-size: 1.3em;
+    font-weight: 600;
+    /* text-align: center; - унаследовано */
+    transition: border-color var(--transition-speed) ease;
+}
+
+.settings-section p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    /* text-align: center; - унаследовано */
+}
+
+.settings-section p strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Кнопки внутри секций */
+.settings-section .button {
+    margin-top: 10px;
+    /* Чтобы кнопки не растягивались на всю ширину из-за text-align: center */
+    display: inline-block;
+    width: auto; /* Ширина по контенту + padding */
+    min-width: 160px; /* Минимальная ширина для единообразия */
+}
+
+/* Кнопка Выйти */
+.button--danger {
+    background-color: #d32f2f; border-color: #d32f2f; color: white;
+}
+.button--danger:hover:not(:disabled) { background-color: #c62828; border-color: #c62828; opacity: 1;}
+body.dark-theme .button--danger { background-color: #e57373; border-color: #e57373; color: #1a1a1a; }
+body.dark-theme .button--danger:hover:not(:disabled) { background-color: #ef9a9a; border-color: #ef9a9a; }
+
+
+/* Блок выбора языка */
+.language-selector {
+    /* Центрируем сам блок внутри settings-section */
+    display: inline-block; /* Чтобы блок не растягивался */
+    margin-top: 10px;
+    /* Внутренние элементы будут центрированы из-за text-align: center у родителя */
+}
+
+.language-selector label {
+    /* Можно добавить отступ справа, если нужно */
+    margin-right: 8px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Select */
+.language-selector .form-input {
+    min-width: 150px;
+    width: auto;
+    padding: 6px 10px;
+    vertical-align: middle; /* Выравнивание с текстом label */
+    text-align: center; /* Центрирование текста внутри select */
+    /* text-align-last: center; */ /* Для некоторых браузеров */
+}
+/* Центрирование опций */
+.language-selector .form-input option{
+    text-align: left; /* Опции лучше оставить слева */
+}

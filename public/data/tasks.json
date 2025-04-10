@@ -1,0 +1,26 @@
+[
+  {
+    "id": "t1-1",
+    "projectId": "1",
+    "title": "Помыть посуду (Проект 1)",
+    "status": "done"
+  },
+  {
+    "id": "t1-2",
+    "projectId": "1",
+    "title": "Вынести мусор (Проект 1)",
+    "status": "inprogress"
+  },
+  {
+    "id": "t1-3",
+    "projectId": "1",
+    "title": "Сделать лабу №5 (Проект 1)",
+    "status": "todo"
+  },
+  {
+    "id": "t2-1",
+    "projectId": "2",
+    "title": "Купить хлеб (Проект 2)",
+    "status": "todo"
+  }
+]

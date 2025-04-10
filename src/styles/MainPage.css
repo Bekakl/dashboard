@@ -1,0 +1,33 @@
+.main-page {
+    display: grid;
+    grid-template-columns: auto 300px;
+    min-height: 100vh;
+}
+
+.main-page__content {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+.main-page__about,
+.main-page__features,
+.main-page__contact {
+    margin-bottom: 40px;
+}
+
+.main-page__about h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.main-page__features h2,
+.main-page__contact h2 {
+    font-size: 2rem;
+    color: #555;
+}
+
+.main-page__features ul {
+    list-style: disc;
+    margin-left: 20px;
+    color: #444;
+}

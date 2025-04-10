@@ -1,0 +1,82 @@
+├── .gitignore
+├── /.idea/
+│  ├── .gitignore
+│  ├── /inspectionProfiles/
+│  │  └── Project_Default.xml
+│  ├── misc.xml
+│  ├── modules.xml
+│  └── workspace.xml
+├── filetree.txt
+├── /node_modules/
+├── package-lock.json
+├── package.json
+├── /public/
+│  ├── 211931.gif
+│  ├── favicon.ico
+│  ├── icegif-83.gif
+│  ├── index.html
+│  ├── logo192.png
+│  ├── logo512.png
+│  ├── manifest.json
+│  └── robots.txt
+├── README.md
+├── /src/
+│  ├── App.css
+│  ├── App.jsx
+│  ├── /assests/
+│  │  └── /font/
+│  ├── /components/
+│  │  ├── /data/
+│  │  ├── DragDropContainer.jsx
+│  │  ├── MainPage.jsx
+│  │  ├── Menu.css
+│  │  ├── Navbar.jsx
+│  │  ├── /pages/
+│  │  │  ├── /context/
+│  │  │  │  └── structure.txt
+│  │  │  ├── ErrorBoundary.jsx
+│  │  │  ├── /Errors/
+│  │  │  ├── firebase.js
+│  │  │  ├── HomePage.css
+│  │  │  ├── Pages.css
+│  │  │  ├── ProfilePage.css
+│  │  │  └── ProjectPage.jsx
+│  │  ├── /redux/
+│  │  ├── Sidebar.jsx
+│  │  └── /styles/
+│  ├── /contexts/
+│  │  └── UserContext.jsx
+│  ├── /data/
+│  │  ├── locales.json
+│  │  └── projects.json
+│  ├── /hooks/
+│  │  ├── useFilteredProjects.js
+│  │  └── useTaskForm.js
+│  ├── index.css
+│  ├── index.js
+│  ├── logo.svg
+│  ├── /pages/
+│  │  ├── DashboardPage.jsx
+│  │  ├── /errors/
+│  │  │  ├── Error403.jsx
+│  │  │  ├── Error404.jsx
+│  │  │  └── Error500.jsx
+│  │  ├── LoginPage.jsx
+│  │  ├── ProjectDetailsPage.jsx
+│  │  └── SettingsPage.jsx
+│  ├── reportWebVitals.js
+│  ├── setupTests.js
+│  ├── /store/
+│  │  ├── /slices/
+│  │  │  └── projectsSlice.js
+│  ├── store.js
+│  ├── /styles/
+│  │  ├── Lunar Escape.otf
+│  │  ├── main.css
+│  │  ├── MainPage.css
+│  │  ├── Navbar.css
+│  │  ├── Pages.css
+│  │  ├── Sidebar.css
+│  │  └── variables.css
+│  ├── /utils/
+│  │  └── helpers.js

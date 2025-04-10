@@ -1,0 +1,118 @@
+/* src/styles/DashboardPage.css */
+
+/* Общий контейнер страницы (базовые стили в index.css) */
+.dashboard-page {
+    /* Можно добавить специфичные отступы, если нужно */
+}
+
+/* Блок приветствия */
+.user-greeting,
+.guest-greeting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--accent-color);
+    transition: border-color var(--transition-speed) ease;
+}
+.user-greeting p,
+.guest-greeting p {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+/* Секция проектов */
+.projects-section {
+    margin-top: 30px;
+}
+.projects-section h2 {
+    margin-bottom: 20px;
+}
+
+
+/* Контейнер фильтра */
+.filter-container {
+    margin-bottom: 20px;
+}
+.filter-container label {
+    margin-right: 10px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+/* Стили для form-input уже есть в index.css */
+
+
+/* Список проектов */
+.project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Элемент списка проектов */
+.project-list-item {
+    display: flex;
+    justify-content: space-between; /* Разносит название и кнопку */
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background-color: var(--card-bg); /* Фон карточки */
+    border: 1px solid var(--accent-color); /* Рамка */
+    border-radius: 6px;
+    box-shadow: var(--shadow-sm); /* Легкая тень */
+    transition: background-color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease,
+    box-shadow 0.2s ease,
+    opacity 0.3s ease; /* Плавность для удаления */
+}
+
+.project-list-item:hover {
+    box-shadow: var(--shadow-md); /* Тень побольше при наведении */
+}
+
+/* Стилизация ссылки внутри элемента списка */
+.project-list-item a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    flex-grow: 1; /* Занимает доступное место */
+    margin-right: 15px; /* Отступ от кнопки */
+}
+.project-list-item a:hover {
+    text-decoration: underline;
+    opacity: 1; /* Убираем стандартный hover для ссылок */
+}
+
+/* Стиль для элемента во время удаления */
+.project-list-item--deleting {
+    opacity: 0.5;
+    pointer-events: none; /* Блокируем взаимодействие */
+}
+
+/* Кнопка удаления внутри списка */
+.project-list-item .button--delete {
+    padding: 2px 8px; /* Делаем кнопку поменьше */
+    font-size: 0.9em;
+    background-color: transparent;
+    border: 1px solid transparent; /* Убираем рамку */
+    color: #f44336; /* Красный цвет */
+    opacity: 0.7; /* Чуть прозрачнее по умолчанию */
+}
+body.dark-theme .project-list-item .button--delete {
+    color: #ef9a9a; /* Светло-красный на темном */
+}
+.project-list-item .button--delete:hover:not(:disabled) {
+    opacity: 1; /* Полная непрозрачность при наведении */
+    background-color: rgba(244, 67, 54, 0.1); /* Легкий красный фон */
+}
+body.dark-theme .project-list-item .button--delete:hover:not(:disabled) {
+    background-color: rgba(239, 154, 154, 0.15);
+}
+
+
+/* Кнопка "Создать проект" */
+.button--create-project {
+    margin-top: 25px;
+    font-weight: 500;
+}
