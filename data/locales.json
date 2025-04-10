@@ -1,0 +1,12 @@
+{
+  "en": {
+    "settings": "Settings",
+    "theme": "Theme",
+    "language": "Language"
+  },
+  "ru": {
+    "settings": "Настройки",
+    "theme": "Тема",
+    "language": "Язык"
+  }
+}
